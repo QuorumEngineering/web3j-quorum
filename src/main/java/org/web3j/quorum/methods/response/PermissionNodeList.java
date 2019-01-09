@@ -1,6 +1,5 @@
 package org.web3j.quorum.methods.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.web3j.protocol.core.Response;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class PermissionNodeList extends Response<List<PermissionNodeList.Permiss
         private String enodeId;
         private String status;
 
-        public PermissionNodeInfo(@JsonProperty("EnodeId") String enodeId, @JsonProperty("Status") String status) {
+        public PermissionNodeInfo(String enodeId, String status) {
             this.enodeId = enodeId;
             this.status = status;
         }

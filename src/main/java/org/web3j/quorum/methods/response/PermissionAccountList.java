@@ -1,6 +1,5 @@
 package org.web3j.quorum.methods.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.web3j.protocol.core.Response;
 
 import java.util.List;
@@ -18,9 +17,9 @@ public class PermissionAccountList extends Response<List<PermissionAccountList.P
         private String access;
         private String address;
 
-        public PermissionAccountInfo(@JsonProperty("Access") String Access, @JsonProperty("Address") String Address) {
-            this.access = Access;
-            this.address = Address;
+        public PermissionAccountInfo(String access, String address) {
+            this.access = access;
+            this.address = address;
         }
 
         public PermissionAccountInfo() {
