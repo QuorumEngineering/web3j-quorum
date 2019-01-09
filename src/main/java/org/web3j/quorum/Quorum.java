@@ -4,8 +4,10 @@ import org.web3j.protocol.Web3j;
 import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
-import org.web3j.quorum.methods.request.*;
-import org.web3j.quorum.methods.response.*;
+import org.web3j.quorum.methods.request.PrivateTransaction;
+import org.web3j.quorum.methods.response.PermissionAccountList;
+import org.web3j.quorum.methods.response.PermissionNodeList;
+import org.web3j.quorum.methods.response.PrivatePayload;
 
 import java.util.List;
 
@@ -20,6 +22,10 @@ public interface Quorum extends Web3j {
     Request<?, EthSendTransaction> ethSendTransaction(PrivateTransaction transaction);
 
     Request<?, PrivatePayload> quorumGetPrivatePayload(String hexDigest);
+
+    Request<?, PermissionAccountList> quorumGetPermissionAccountList();
+
+    Request<?, PermissionNodeList> quorumGetPermissionNodeList();
 
     Request<?, EthSendTransaction> ethSendRawTransaction(String signedTransactionData);
 

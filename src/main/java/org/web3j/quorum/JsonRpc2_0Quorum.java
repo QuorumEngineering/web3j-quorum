@@ -1,17 +1,19 @@
 package org.web3j.quorum;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ScheduledExecutorService;
-
 import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.JsonRpc2_0Web3j;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.quorum.methods.request.PrivateRawTransaction;
 import org.web3j.quorum.methods.request.PrivateTransaction;
+import org.web3j.quorum.methods.response.PermissionAccountList;
+import org.web3j.quorum.methods.response.PermissionNodeList;
 import org.web3j.quorum.methods.response.PrivatePayload;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * Quorum JSON-RPC API implementation.
@@ -66,5 +68,23 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 Collections.singletonList(hexDigest),
                 web3jService,
                 PrivatePayload.class);
+    }
+
+    @Override
+    public Request<?, PermissionAccountList> quorumGetPermissionAccountList() {
+        return new Request<>(
+                "quorumAcctMgmt_permissionAccountList",
+                Collections.emptyList(),
+                web3jService,
+                PermissionAccountList.class);
+    }
+
+    @Override
+    public Request<?, PermissionNodeList> quorumGetPermissionNodeList() {
+        return new Request<>(
+                "quorumNodeMgmt_permissionNodeList",
+                Collections.emptyList(),
+                web3jService,
+                PermissionNodeList.class);
     }
 }
