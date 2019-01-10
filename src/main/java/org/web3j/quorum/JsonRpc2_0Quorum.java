@@ -6,6 +6,7 @@ import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.quorum.methods.request.PrivateRawTransaction;
 import org.web3j.quorum.methods.request.PrivateTransaction;
+import org.web3j.quorum.methods.response.ExecStatusInfo;
 import org.web3j.quorum.methods.response.PermissionAccountList;
 import org.web3j.quorum.methods.response.PermissionNodeList;
 import org.web3j.quorum.methods.response.PrivatePayload;
@@ -77,6 +78,15 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 Collections.emptyList(),
                 web3jService,
                 PermissionAccountList.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumSetAccountPermission(String address, String access, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumAcctMgmt_setAccountAccess",
+                Arrays.asList(address, access, transaction),
+                web3jService,
+                ExecStatusInfo.class);
     }
 
     @Override

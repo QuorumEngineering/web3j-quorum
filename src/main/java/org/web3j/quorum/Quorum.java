@@ -5,6 +5,7 @@ import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.quorum.methods.request.PrivateTransaction;
+import org.web3j.quorum.methods.response.ExecStatusInfo;
 import org.web3j.quorum.methods.response.PermissionAccountList;
 import org.web3j.quorum.methods.response.PermissionNodeList;
 import org.web3j.quorum.methods.response.PrivatePayload;
@@ -25,9 +26,12 @@ public interface Quorum extends Web3j {
 
     Request<?, PermissionAccountList> quorumGetPermissionAccountList();
 
+    Request<?, ExecStatusInfo> quorumSetAccountPermission(String address, String access, PrivateTransaction transaction);
+
     Request<?, PermissionNodeList> quorumGetPermissionNodeList();
 
     Request<?, EthSendTransaction> ethSendRawTransaction(String signedTransactionData);
 
     Request<?, EthSendTransaction> ethSendRawPrivateTransaction(String signedTransactionData, List<String> privateFor);
+
 }
