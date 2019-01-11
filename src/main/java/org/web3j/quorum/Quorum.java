@@ -5,10 +5,7 @@ import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.quorum.methods.request.PrivateTransaction;
-import org.web3j.quorum.methods.response.ExecStatusInfo;
-import org.web3j.quorum.methods.response.PermissionAccountList;
-import org.web3j.quorum.methods.response.PermissionNodeList;
-import org.web3j.quorum.methods.response.PrivatePayload;
+import org.web3j.quorum.methods.response.*;
 
 import java.util.List;
 
@@ -29,6 +26,22 @@ public interface Quorum extends Web3j {
     Request<?, ExecStatusInfo> quorumSetAccountPermission(String address, String access, PrivateTransaction transaction);
 
     Request<?, PermissionNodeList> quorumGetPermissionNodeList();
+
+    Request<?, PermissionVoterList> quorumGetPermissionVoterList();
+
+    Request<?, ExecStatusInfo> quorumAddPermissionVoter(String address, PrivateTransaction transaction);
+
+    Request<?, ExecStatusInfo> quorumRemovePermissionVoter(String address, PrivateTransaction transaction);
+
+    Request<?, ExecStatusInfo> quorumProposePermissionNode(String address, PrivateTransaction transaction);
+
+    Request<?, ExecStatusInfo> quorumApprovePermissionNode(String address, PrivateTransaction transaction);
+
+
+    Request<?, ExecStatusInfo> quorumProposePermissionNodeDeactivation(String address, PrivateTransaction transaction);
+
+    Request<?, ExecStatusInfo> quorumApprovePermissionNodeDeactivation(String address, PrivateTransaction transaction);
+
 
     Request<?, EthSendTransaction> ethSendRawTransaction(String signedTransactionData);
 

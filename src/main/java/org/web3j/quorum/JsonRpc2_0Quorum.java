@@ -6,10 +6,7 @@ import org.web3j.protocol.core.Request;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.quorum.methods.request.PrivateRawTransaction;
 import org.web3j.quorum.methods.request.PrivateTransaction;
-import org.web3j.quorum.methods.response.ExecStatusInfo;
-import org.web3j.quorum.methods.response.PermissionAccountList;
-import org.web3j.quorum.methods.response.PermissionNodeList;
-import org.web3j.quorum.methods.response.PrivatePayload;
+import org.web3j.quorum.methods.response.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -96,5 +93,68 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 Collections.emptyList(),
                 web3jService,
                 PermissionNodeList.class);
+    }
+
+    @Override
+    public Request<?, PermissionVoterList> quorumGetPermissionVoterList() {
+        return new Request<>(
+                "quorumNodeMgmt_voterList",
+                Collections.emptyList(),
+                web3jService,
+                PermissionVoterList.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumAddPermissionVoter(String address, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumAcctMgmt_addVoter",
+                Arrays.asList(address, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumRemovePermissionVoter(String address, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumAcctMgmt_removeVoter",
+                Arrays.asList(address, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumProposePermissionNode(String address, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumAcctMgmt_proposeNode",
+                Arrays.asList(address, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumApprovePermissionNode(String address, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumAcctMgmt_approveNode",
+                Arrays.asList(address, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumProposePermissionNodeDeactivation(String address, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumAcctMgmt_proposeNodeDeactivation",
+                Arrays.asList(address, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumApprovePermissionNodeDeactivation(String address, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumAcctMgmt_approveNodeDeactivation",
+                Arrays.asList(address, transaction),
+                web3jService,
+                ExecStatusInfo.class);
     }
 }
