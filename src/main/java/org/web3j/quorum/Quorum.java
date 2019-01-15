@@ -41,6 +41,11 @@ public interface Quorum extends Web3j {
     Request<?, ExecStatusInfo> quorumProposePermissionNodeDeactivation(String address, PrivateTransaction transaction);
 
     Request<?, ExecStatusInfo> quorumApprovePermissionNodeDeactivation(String address, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumAddMasterOrg(String morgId, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumAddSubOrg(String sorgId, String morgId, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumAddOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction);
+    Request<?, OrgVoterList>   quorumGetOrgVoterList(String morgId);
+
 
 
     Request<?, EthSendTransaction> ethSendRawTransaction(String signedTransactionData);

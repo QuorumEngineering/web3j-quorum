@@ -157,4 +157,37 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 web3jService,
                 ExecStatusInfo.class);
     }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumAddMasterOrg(String morgId, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumOrgMgmt_addMasterOrg",
+                Arrays.asList(morgId, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+    @Override
+    public Request<?, ExecStatusInfo> quorumAddSubOrg(String sorgId, String morgId, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumOrgMgmt_addSubOrg",
+                Arrays.asList(sorgId, morgId, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+    @Override
+    public Request<?, ExecStatusInfo> quorumAddOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumOrgMgmt_addOrgVoter",
+                Arrays.asList(morgId, voterAcct, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+    @Override
+    public Request<?, OrgVoterList> quorumGetOrgVoterList(String morgId) {
+        return new Request<>(
+                "quorumOrgMgmt_getOrgVoterList",
+                Arrays.asList(morgId),
+                web3jService,
+                OrgVoterList.class);
+    }
 }
