@@ -183,6 +183,14 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 ExecStatusInfo.class);
     }
     @Override
+    public Request<?, ExecStatusInfo> quorumDeleteOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumOrgMgmt_deleteOrgVoter",
+                Arrays.asList(morgId, voterAcct, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+    @Override
     public Request<?, OrgVoterList> quorumGetOrgVoterList(String morgId) {
         return new Request<>(
                 "quorumOrgMgmt_getOrgVoterList",
@@ -190,4 +198,40 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 web3jService,
                 OrgVoterList.class);
     }
+
+    @Override
+    public Request<?, OrgKeyInfoList> quorumOrgKeyInfoList() {
+        return new Request<>(
+                "quorumOrgMgmt_orgKeyInfo",
+                Arrays.asList(),
+                web3jService,
+                OrgKeyInfoList.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumAddOrgKey(String sorgId, String tmKey, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumOrgMgmt_addOrgKey",
+                Arrays.asList(sorgId, tmKey, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+    @Override
+    public Request<?, ExecStatusInfo> quorumDeleteOrgKey(String sorgId, String tmKey, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumOrgMgmt_deleteOrgKey",
+                Arrays.asList(sorgId, tmKey, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+    @Override
+    public Request<?, ExecStatusInfo> quorumApprovePendingOp(String sorgId, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumOrgMgmt_approvePendingOp",
+                Arrays.asList(sorgId, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+
 }
