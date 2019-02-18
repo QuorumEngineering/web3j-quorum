@@ -183,9 +183,9 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 ExecStatusInfo.class);
     }
     @Override
-    public Request<?, ExecStatusInfo> quorumDeleteOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumRemoveOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction) {
         return new Request<>(
-                "quorumOrgMgmt_deleteOrgVoter",
+                "quorumOrgMgmt_removeOrgVoter",
                 Arrays.asList(morgId, voterAcct, transaction),
                 web3jService,
                 ExecStatusInfo.class);
@@ -217,9 +217,9 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 ExecStatusInfo.class);
     }
     @Override
-    public Request<?, ExecStatusInfo> quorumDeleteOrgKey(String sorgId, String tmKey, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumRemoveOrgKey(String sorgId, String tmKey, PrivateTransaction transaction) {
         return new Request<>(
-                "quorumOrgMgmt_deleteOrgKey",
+                "quorumOrgMgmt_removeOrgKey",
                 Arrays.asList(sorgId, tmKey, transaction),
                 web3jService,
                 ExecStatusInfo.class);

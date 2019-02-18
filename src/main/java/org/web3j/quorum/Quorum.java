@@ -44,12 +44,12 @@ public interface Quorum extends Web3j {
     Request<?, ExecStatusInfo> quorumAddMasterOrg(String morgId, PrivateTransaction transaction);
     Request<?, ExecStatusInfo> quorumAddSubOrg(String sorgId, String morgId, PrivateTransaction transaction);
     Request<?, ExecStatusInfo> quorumAddOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction);
-    Request<?, ExecStatusInfo> quorumDeleteOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumRemoveOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction);
     Request<?, OrgVoterList>   quorumGetOrgVoterList(String morgId);
     Request<?, OrgKeyInfoList> quorumOrgKeyInfoList();
     Request<?, ExecStatusInfo> quorumAddOrgKey(String sorgId, String tmKey, PrivateTransaction transaction );
     Request<?, ExecStatusInfo> quorumApprovePendingOp(String sorgId, PrivateTransaction transaction );
-    Request<?, ExecStatusInfo> quorumDeleteOrgKey(String sorgId, String tmKey, PrivateTransaction transaction );
+    Request<?, ExecStatusInfo> quorumRemoveOrgKey(String sorgId, String tmKey, PrivateTransaction transaction );
 
 
 
