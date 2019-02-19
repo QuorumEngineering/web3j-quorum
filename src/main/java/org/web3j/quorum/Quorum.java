@@ -23,7 +23,7 @@ public interface Quorum extends Web3j {
 
     Request<?, PermissionAccountList> quorumGetPermissionAccountList();
 
-    Request<?, ExecStatusInfo> quorumSetAccountPermission(String address, String access, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumSetAccountPermission(String address, int access, PrivateTransaction transaction);
 
     Request<?, PermissionNodeList> quorumGetPermissionNodeList();
 

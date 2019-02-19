@@ -78,7 +78,7 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumSetAccountPermission(String address, String access, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumSetAccountPermission(String address, int access, PrivateTransaction transaction) {
         return new Request<>(
                 "quorumAcctMgmt_setAccountAccess",
                 Arrays.asList(address, access, transaction),
