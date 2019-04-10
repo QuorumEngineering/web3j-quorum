@@ -44,7 +44,7 @@ public class PermissionAccountList extends Response<List<PermissionAccountList.P
             return isOrgAdmin;
         }
 
-        public void setOrgAdmin(boolean orgAdmin) {
+        public void setIsOrgAdmin(boolean orgAdmin) {
             isOrgAdmin = orgAdmin;
         }
 

@@ -14,19 +14,28 @@ public class PermissionOrgList extends Response<List<PermissionOrgList.Permissio
 
     public static class PermissionOrgInfo {
 
-        private String fullOrgId;
+        /*
+        	OrgId          string
+	FullOrgId      string
+	ParentOrgId    string
+	UltimateParent string
+	Level          *big.Int
+	SubOrgList     []string
+	Status         OrgStatus
+         */
         private String orgId;
+        private String fullOrgId;
         private String parentOrgId;
-        private Integer level;
-        private Integer status;
-        private List<String> subOrgList;
         private String ultimateParent;
+        private int level;
+        private List<String> subOrgList;
+        private int status;
 
 
         public PermissionOrgInfo() {
         }
 
-        public PermissionOrgInfo(String fullOrgId, String orgId, String parentOrgId, Integer level, Integer status, List<String> subOrgList, String ultimateParent) {
+        public PermissionOrgInfo(String orgId, String fullOrgId, String parentOrgId, String ultimateParent, int level, List<String> subOrgList, int status) {
             this.fullOrgId = fullOrgId;
             this.orgId = orgId;
             this.parentOrgId = parentOrgId;
@@ -61,19 +70,19 @@ public class PermissionOrgList extends Response<List<PermissionOrgList.Permissio
             this.parentOrgId = parentOrgId;
         }
 
-        public Integer getLevel() {
+        public int getLevel() {
             return level;
         }
 
-        public void setLevel(Integer level) {
+        public void setLevel(int level) {
             this.level = level;
         }
 
-        public Integer getStatus() {
+        public int getStatus() {
             return status;
         }
 
-        public void setStatus(Integer status) {
+        public void setStatus(int status) {
             this.status = status;
         }
 
