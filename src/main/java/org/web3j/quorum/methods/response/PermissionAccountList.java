@@ -14,33 +14,54 @@ public class PermissionAccountList extends Response<List<PermissionAccountList.P
 
     public static class PermissionAccountInfo {
 
-        private String access;
-        private String address;
+        private String acctId;
+        private boolean isOrgAdmin;
+        private String orgId;
+        private String roleId;
+        private int status;
 
-        public PermissionAccountInfo(String access, String address) {
-            this.access = access;
-            this.address = address;
+        public PermissionAccountInfo(String acctId, boolean isOrgAdmin, String orgId, String roleId, int status) {
+            this.acctId = acctId;
+            this.isOrgAdmin = isOrgAdmin;
+            this.orgId = orgId;
+            this.roleId = roleId;
+            this.status = status;
         }
+
 
         public PermissionAccountInfo() {
         }
 
-
-        public String getAccess() {
-            return access;
+        public String getAcctId() {
+            return acctId;
         }
 
-
-        public void setAccess(String access) {
-            this.access = access;
+        public void setAcctId(String acctId) {
+            this.acctId = acctId;
         }
 
-        public String getAddress() {
-            return address;
+        public boolean isOrgAdmin() {
+            return isOrgAdmin;
         }
 
-        public void setAddress(String address) {
-            this.address = address;
+        public void setOrgAdmin(boolean orgAdmin) {
+            isOrgAdmin = orgAdmin;
+        }
+
+        public String getOrgId() {
+            return orgId;
+        }
+
+        public void setOrgId(String orgId) {
+            this.orgId = orgId;
+        }
+
+        public String getRoleId() {
+            return roleId;
+        }
+
+        public void setRoleId(String roleId) {
+            this.roleId = roleId;
         }
 
         @Override
@@ -48,13 +69,20 @@ public class PermissionAccountList extends Response<List<PermissionAccountList.P
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             PermissionAccountInfo that = (PermissionAccountInfo) o;
-            return Objects.equals(access, that.access) &&
-                    Objects.equals(address, that.address);
+            return Objects.equals(acctId, that.acctId);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(access, address);
+            return Objects.hash(acctId);
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
         }
     }
 
