@@ -13,6 +13,16 @@ public class PermissionNodeList extends Response<List<PermissionNodeList.Permiss
     public static class PermissionNodeInfo {
         private String orgId;
         private String url;
+
+        @Override
+        public String toString() {
+            return "PermissionNodeInfo{" +
+                    "orgId='" + orgId + '\'' +
+                    ", url='" + url + '\'' +
+                    ", status=" + status +
+                    '}';
+        }
+
         private int status;
 
         @Override

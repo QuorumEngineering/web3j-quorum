@@ -14,21 +14,26 @@ public class PermissionOrgList extends Response<List<PermissionOrgList.Permissio
 
     public static class PermissionOrgInfo {
 
-        /*
-        	OrgId          string
-	FullOrgId      string
-	ParentOrgId    string
-	UltimateParent string
-	Level          *big.Int
-	SubOrgList     []string
-	Status         OrgStatus
-         */
         private String orgId;
         private String fullOrgId;
         private String parentOrgId;
         private String ultimateParent;
         private int level;
         private List<String> subOrgList;
+
+        @Override
+        public String toString() {
+            return "PermissionOrgInfo{" +
+                    "orgId='" + orgId + '\'' +
+                    ", fullOrgId='" + fullOrgId + '\'' +
+                    ", parentOrgId='" + parentOrgId + '\'' +
+                    ", ultimateParent='" + ultimateParent + '\'' +
+                    ", level=" + level +
+                    ", subOrgList=" + subOrgList +
+                    ", status=" + status +
+                    '}';
+        }
+
         private int status;
 
 

@@ -85,6 +85,17 @@ public class PermissionRoleList extends Response<List<PermissionRoleList.Permiss
         public int hashCode() {
             return Objects.hash(orgId, roleId);
         }
+
+        @Override
+        public String toString() {
+            return "PermissionRoleInfo{" +
+                    "isVoter=" + isVoter +
+                    ", active=" + active +
+                    ", orgId='" + orgId + '\'' +
+                    ", roleId='" + roleId + '\'' +
+                    ", access=" + access +
+                    '}';
+        }
     }
 
 

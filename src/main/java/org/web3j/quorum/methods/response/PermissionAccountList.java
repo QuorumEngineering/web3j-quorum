@@ -28,6 +28,16 @@ public class PermissionAccountList extends Response<List<PermissionAccountList.P
             this.status = status;
         }
 
+        @Override
+        public String toString() {
+            return "PermissionAccountInfo{" +
+                    "acctId='" + acctId + '\'' +
+                    ", isOrgAdmin=" + isOrgAdmin +
+                    ", orgId='" + orgId + '\'' +
+                    ", roleId='" + roleId + '\'' +
+                    ", status=" + status +
+                    '}';
+        }
 
         public PermissionAccountInfo() {
         }
