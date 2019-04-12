@@ -207,7 +207,7 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
     public Request<?, ExecStatusInfo> quorumPermissionAssignAccountRole(String address, String orgId, String roleId, PrivateTransaction transaction) {
         return new Request<>(
                 "quorumPermission_assignAccountRole",
-                Arrays.asList(address, orgId, roleId, address, transaction),
+                Arrays.asList(address, orgId, roleId, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
