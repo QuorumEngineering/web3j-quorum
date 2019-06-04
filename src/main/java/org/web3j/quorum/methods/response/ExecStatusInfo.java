@@ -2,11 +2,10 @@ package org.web3j.quorum.methods.response;
 
 import org.web3j.protocol.core.Response;
 
-public class ExecStatusInfo extends Response<ExecStatus> {
+public class ExecStatusInfo extends Response<String> {
 
-    public ExecStatus getExecStatus() {
+    public String getExecStatus() {
         return getResult();
     }
-
 
 }

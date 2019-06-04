@@ -33,38 +33,29 @@ public interface Quorum extends Web3j {
 
     Request<?, ExecStatusInfo> quorumPermissionApproveOrg(String orgId, String url, String address, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionAddSubOrg(String pOrgId, String orgId, String url, String address, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionAddSubOrg(String pOrgId, String orgId, String url, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionUpdateOrgStatus(String orgId, int status, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionUpdateOrgStatus(String orgId, int action, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionApproveOrgStatus(String orgId, int status, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionApproveOrgStatus(String orgId, int action, PrivateTransaction transaction);
 
     Request<?, ExecStatusInfo> quorumPermissionAddNode(String orgId, String url, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionUpdateNodeStatus(String orgId, String url, int status, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionUpdateNodeStatus(String orgId, String url, int action, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionAssignOrgAdminAccount(String orgId, String address, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionAssignAdminRole(String orgId, String address, String roleid, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionApproveOrgAdminAccount(String address, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionApproveAdminRole(String orgId, String address, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionAddNewRole(String orgId, String roleId, int access, boolean isVoter, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionAddNewRole(String orgId, String roleId, int access, boolean isVoter, boolean isAdmin, PrivateTransaction transaction);
 
     Request<?, ExecStatusInfo> quorumPermissionRemoveRole(String orgId, String roleId, PrivateTransaction transaction);
 
-    Request<?, ExecStatusInfo> quorumPermissionAssignAccountRole(String address, String orgId, String roleId, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionAddAccountToOrg(String address, String orgId, String roleId, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionChangeAccountRole(String address, String orgId, String roleId, PrivateTransaction transaction);
+    Request<?, ExecStatusInfo> quorumPermissionUpdateAccountStatus(String orgId, String address, int status, PrivateTransaction transaction);
 
     Request<?, OrgDetailsInfo> quorumPermissionGetOrgDetails(String orgId, PrivateTransaction transaction);
-
-    Request<?, ExecStatusInfo> quorumAddMasterOrg(String morgId, PrivateTransaction transaction);
-    Request<?, ExecStatusInfo> quorumAddSubOrg(String sorgId, String morgId, PrivateTransaction transaction);
-    Request<?, ExecStatusInfo> quorumAddOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction);
-    Request<?, ExecStatusInfo> quorumRemoveOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction);
-    Request<?, OrgVoterList>   quorumGetOrgVoterList(String morgId);
-    Request<?, OrgKeyInfoList> quorumOrgKeyInfoList();
-    Request<?, ExecStatusInfo> quorumAddOrgKey(String sorgId, String tmKey, PrivateTransaction transaction );
-    Request<?, ExecStatusInfo> quorumApprovePendingOp(String sorgId, PrivateTransaction transaction );
-    Request<?, ExecStatusInfo> quorumRemoveOrgKey(String sorgId, String tmKey, PrivateTransaction transaction );
-
 
 
     Request<?, EthSendTransaction> ethSendRawTransaction(String signedTransactionData);

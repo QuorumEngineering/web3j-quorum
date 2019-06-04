@@ -123,28 +123,28 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumPermissionAddSubOrg(String pOrgId, String orgId, String url, String address, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumPermissionAddSubOrg(String pOrgId, String orgId, String url,  PrivateTransaction transaction) {
         return new Request<>(
                 "quorumPermission_addSubOrg",
-                Arrays.asList(pOrgId, orgId, url, address, transaction),
+                Arrays.asList(pOrgId, orgId, url, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumPermissionUpdateOrgStatus(String orgId, int status, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumPermissionUpdateOrgStatus(String orgId, int action, PrivateTransaction transaction) {
         return new Request<>(
                 "quorumPermission_updateOrgStatus",
-                Arrays.asList(orgId, status, transaction),
+                Arrays.asList(orgId, action, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumPermissionApproveOrgStatus(String orgId, int status, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumPermissionApproveOrgStatus(String orgId, int action, PrivateTransaction transaction) {
         return new Request<>(
                 "quorumPermission_approveOrgStatus",
-                Arrays.asList(orgId, status, transaction),
+                Arrays.asList(orgId, action, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
@@ -159,37 +159,37 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumPermissionUpdateNodeStatus(String orgId, String url, int status, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumPermissionUpdateNodeStatus(String orgId, String url, int action, PrivateTransaction transaction) {
         return new Request<>(
                 "quorumPermission_updateNodeStatus",
-                Arrays.asList(orgId, url, status, transaction),
+                Arrays.asList(orgId, url, action, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumPermissionAssignOrgAdminAccount(String orgId, String address, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumPermissionAssignAdminRole(String orgId, String address, String roleId,  PrivateTransaction transaction) {
         return new Request<>(
-                "quorumPermission_assignOrgAdminAccount",
+                "quorumPermission_assignAdminRole",
+                Arrays.asList(orgId, address, roleId, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumPermissionApproveAdminRole(String orgId, String address, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumPermission_approveAdminRole",
                 Arrays.asList(orgId, address, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumPermissionApproveOrgAdminAccount(String address, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumPermission_approveOrgAdminAccount",
-                Arrays.asList(address, transaction),
-                web3jService,
-                ExecStatusInfo.class);
-    }
-
-    @Override
-    public Request<?, ExecStatusInfo> quorumPermissionAddNewRole(String orgId, String roleId, int access, boolean isVoter, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumPermissionAddNewRole(String orgId, String roleId, int access, boolean isVoter, boolean isAdmin, PrivateTransaction transaction) {
         return new Request<>(
                 "quorumPermission_addNewRole",
-                Arrays.asList(orgId, roleId, access, isVoter, transaction),
+                Arrays.asList(orgId, roleId, access, isVoter, isAdmin, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
@@ -204,10 +204,28 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
     }
 
     @Override
-    public Request<?, ExecStatusInfo> quorumPermissionAssignAccountRole(String address, String orgId, String roleId, PrivateTransaction transaction) {
+    public Request<?, ExecStatusInfo> quorumPermissionAddAccountToOrg(String address, String orgId, String roleId, PrivateTransaction transaction) {
         return new Request<>(
-                "quorumPermission_assignAccountRole",
+                "quorumPermission_addAccountToOrg",
                 Arrays.asList(address, orgId, roleId, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumPermissionChangeAccountRole(String address, String orgId, String roleId, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumPermission_changeAccountRole",
+                Arrays.asList(address, orgId, roleId, transaction),
+                web3jService,
+                ExecStatusInfo.class);
+    }
+
+    @Override
+    public Request<?, ExecStatusInfo> quorumPermissionUpdateAccountStatus(String orgId, String address, int status, PrivateTransaction transaction) {
+        return new Request<>(
+                "quorumPermission_updateAccountStatus",
+                Arrays.asList(orgId, address, status, transaction),
                 web3jService,
                 ExecStatusInfo.class);
     }
@@ -219,82 +237,6 @@ public class JsonRpc2_0Quorum extends JsonRpc2_0Web3j implements Quorum {
                 Arrays.asList(orgId, transaction),
                 web3jService,
                 OrgDetailsInfo.class);
-    }
-
-
-    @Override
-    public Request<?, ExecStatusInfo> quorumAddMasterOrg(String morgId, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumOrgMgmt_addMasterOrg",
-                Arrays.asList(morgId, transaction),
-                web3jService,
-                ExecStatusInfo.class);
-    }
-    @Override
-    public Request<?, ExecStatusInfo> quorumAddSubOrg(String sorgId, String morgId, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumOrgMgmt_addSubOrg",
-                Arrays.asList(sorgId, morgId, transaction),
-                web3jService,
-                ExecStatusInfo.class);
-    }
-    @Override
-    public Request<?, ExecStatusInfo> quorumAddOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumOrgMgmt_addOrgVoter",
-                Arrays.asList(morgId, voterAcct, transaction),
-                web3jService,
-                ExecStatusInfo.class);
-    }
-    @Override
-    public Request<?, ExecStatusInfo> quorumRemoveOrgVoter(String morgId, String voterAcct, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumOrgMgmt_removeOrgVoter",
-                Arrays.asList(morgId, voterAcct, transaction),
-                web3jService,
-                ExecStatusInfo.class);
-    }
-    @Override
-    public Request<?, OrgVoterList> quorumGetOrgVoterList(String morgId) {
-        return new Request<>(
-                "quorumOrgMgmt_getOrgVoterList",
-                Arrays.asList(morgId),
-                web3jService,
-                OrgVoterList.class);
-    }
-
-    @Override
-    public Request<?, OrgKeyInfoList> quorumOrgKeyInfoList() {
-        return new Request<>(
-                "quorumOrgMgmt_orgKeyInfo",
-                Arrays.asList(),
-                web3jService,
-                OrgKeyInfoList.class);
-    }
-
-    @Override
-    public Request<?, ExecStatusInfo> quorumAddOrgKey(String sorgId, String tmKey, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumOrgMgmt_addOrgKey",
-                Arrays.asList(sorgId, tmKey, transaction),
-                web3jService,
-                ExecStatusInfo.class);
-    }
-    @Override
-    public Request<?, ExecStatusInfo> quorumRemoveOrgKey(String sorgId, String tmKey, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumOrgMgmt_removeOrgKey",
-                Arrays.asList(sorgId, tmKey, transaction),
-                web3jService,
-                ExecStatusInfo.class);
-    }
-    @Override
-    public Request<?, ExecStatusInfo> quorumApprovePendingOp(String sorgId, PrivateTransaction transaction) {
-        return new Request<>(
-                "quorumOrgMgmt_approvePendingOp",
-                Arrays.asList(sorgId, transaction),
-                web3jService,
-                ExecStatusInfo.class);
     }
 
 
